@@ -28,8 +28,8 @@ public interface CarInterface{
         	return this.position;
         }
         
-        public List<Integer> getParkingSlots(){
-        	return this.parkingSlots;
+        public int getLane(){
+        	return this.carLane;
         }
     }
 
@@ -41,13 +41,13 @@ public interface CarInterface{
     Post-condtion: None
     Test-cases: None
     */
-    class CarSituation {
+    class CarPosition {
         int position;
         boolean parked;
 
-        public CarSituation(int position, boolean parked){
+        public CarPosition(int position, int lane){
             this.position = position;
-            this.parked = parked;
+            this.lane = lane;
 
         }
 
@@ -56,8 +56,8 @@ public interface CarInterface{
             return this.position;
         }
         
-        public boolean getIsParked(){
-            return this.parked;
+        public int getLane(){
+            return this.lane;
         }
         
     }
@@ -82,7 +82,7 @@ public interface CarInterface{
     Post-condtion: None
     Test-cases: TC4
     */
-    CarSituation whereIs();
+    CarPosition whereIs();
 
 
 

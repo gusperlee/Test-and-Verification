@@ -101,4 +101,15 @@ public class CarClass {
 
         return  Current_postion & lane_pos ;
     }
+    // main for testing
+    public static void main(String[] args) {
+
+        CarClass carClass = new CarClass();
+
+        for (int i = 0; i < 100; i++) {
+            carClass.moveForward();
+        }
+
+    }
+    
 }

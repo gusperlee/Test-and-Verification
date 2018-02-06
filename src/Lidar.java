@@ -12,11 +12,12 @@ public class Lidar {
     }
 
     int getDistance_obs(){
+
         return Distance_car;
     }
 
 
-
+/**
     boolean Check_left_lane(int dis_to_target) {
 
         if (Distance_car > 1) {
@@ -24,23 +25,24 @@ public class Lidar {
         }
         return false;
     }
-    public ArrayList<Integer> checkReading(int to_obstacle ) {
+ **/
+    public int checkReading(int to_obstacle ) {
 
         //sensor_data=new int [];
         // this.distance_obs=reading;
         if ( to_obstacle < 50  && to_obstacle > 0 && to_obstacle <= detect_distance  ){
-            Lidar_data.add(1);
-            i++;
+            return 1;
+           //i++;
         }else if (to_obstacle < 50  && to_obstacle > 0 &&  to_obstacle >detect_distance ){
-            Lidar_data.add(2);
-            i++;
+            return 2 ;
+            //i++;
         } else  {
-            Lidar_data.add(-1);
-            i++;
+            return 1;
+            //i++;
         }
-        return Lidar_data;
 
     }
 }
+
 
 

@@ -25,7 +25,7 @@ public interface CarInterface {
 
 
     /**
-     * Description: The method calls checkLeftLane() and if it returns true, then change to the lane on the left.
+     * Description: The method calls leftLaneDetect() and if it returns true, then change to the lane on the left.
      * Pre-condition: Car is on the street and in the 0-100 range on the y-axis and between 0-1.99999... on the y-axis.
      * Post-condtion: None
      * Test-cases:
@@ -33,7 +33,7 @@ public interface CarInterface {
     void changeLane();
 
     /**
-     * Description:
+     * Description: Takes eight consecutive measurements, taken from the four sensors, as arguments and checks if these are within bound of normality (0m-50m)
      * Pre-condition:
      * Post-condtion:
      * Test-cases:

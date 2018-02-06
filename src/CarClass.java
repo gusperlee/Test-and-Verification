@@ -85,7 +85,7 @@ public class CarClass {
         //  }
         //  }
 
-       // j++;
+        // j++;
         return data;
     }
 
@@ -94,7 +94,7 @@ public class CarClass {
         if (isEmpty) {
            moveForward();
            this.lane_pos=+1;
-       } else {
+        } else {
             moveForward();
         }
     }
@@ -103,5 +103,4 @@ public class CarClass {
     Point whereIs() {
         return new Point(Current_postion, lane_pos);
     }
-
 }

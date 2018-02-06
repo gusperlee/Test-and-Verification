@@ -3,32 +3,30 @@ import java.util.ArrayList;
 
 public class CarClass {
 
-    public int Current_postion = 0;
-    public int lane_pos = 1;
+    public  int current_postion;
+    public  int lane_pos=1 ;
     public ArrayList<Integer> data = new ArrayList<>();
-   // public int j = 0;
-    public boolean isEmpty;
+    public  boolean isEmpty=true;
+   // public Point Coordinates = new Point (Current_postion,lane_pos );
+
     private Radar front_radar = new Radar(0, new ArrayList<>());
     private Radar rear_radar = new Radar(0, new ArrayList<>());
     private Radar left_radar = new Radar(0, new ArrayList<>());
     private Lidar lidar = new Lidar(0, new ArrayList<>());
 
     public CarClass(int positionx, int positionY) {
-        this.Current_postion = positionx;
+        this.current_postion = positionx;
         this.lane_pos = positionY;
     }
 
     // Assuming the car is moving 5 meters whenever the move function is called the car will move 5 meters. it stops  it reaches 100 meters.
 
     public boolean moveForward() {
-        // int wheel_diam =5;
-        // int distance=500;
-        // int motor_diam;
-        // double Spin=500/(2*Math.PI*5);
-        if (Current_postion < 100 && Current_postion >= 0) {
+        if (current_postion < 96 && current_postion >= 0) {
 
-            Current_postion += 5;
+            current_postion += 5;
             return true;
+
         } else {
 
             return false;
@@ -36,34 +34,39 @@ public class CarClass {
         }
     }
 
-    public boolean leftLaneDetect (int front, int rear, int left , int lidar_data, int front1, int rear1, int left1 , int lidar_data1 ) {
+    public boolean leftLaneDetect(int front, int rear, int left, int lidar_data,
+                                  int front1, int rear1, int left1, int lidar_data1) {
 
-        int count_change=0;
-        int count_faulty=0;
-        query(front,rear,left,lidar_data);
-        query(front1,rear1,left1,lidar_data1);
+        int count_changeLane = 0;
+        int count_faulty = 0;
+        querry(front, rear, left, lidar_data);
+        querry(front1, rear1, left1, lidar_data1);
 
         for (int j = 0; j < data.size(); j++) {
 
-            if (data.get(j) == -1) {
+            if (j<4 && data.get(j) == 2 && (data.get(j+4) == 2 || data.get(j+4) == -1 || data.get(j+4) == 1) ) {
                 count_faulty++;
 
             }
-            if (data.get(j) == 2) {
-                count_change++;
+            if (j <4 && data.get(j) == 1 &&  data.get(j+4)==1 ) {
+                count_changeLane++;
 
             }
 
+
         }
-        if (count_change > 4 && count_faulty > 2) {
-            isEmpty = false;
-        } else {
+        if (count_changeLane > 1 && count_faulty ==0 ) {
             isEmpty = true;
+        } else if (count_faulty > 0){
+           isEmpty = false;
         }
+
+        System.out.println("enfjeje" + count_faulty + isEmpty + count_changeLane );
         return isEmpty;
     }
 
-    public ArrayList<Integer> query(int front, int rear, int left , int lidar_data) {
+    public ArrayList<Integer> querry(int front, int rear, int left, int lidar_data) {
+
        // front_radar.checkReading(front);
         //rear_radar.checkReading(rear);
         //left_radar.checkReading(left);
@@ -92,16 +95,31 @@ public class CarClass {
     public void changeLane() {
 
         if (isEmpty) {
-           moveForward();
-           this.lane_pos=+1;
-       } else {
+
+            moveForward();
+           // Coordinates.y = lane_pos ++;
+            lane_pos ++;
+            System.out.println("lalalalala" + lane_pos  );
+
+        } else {
+
             moveForward();
         }
+
     }
 
     //checks in which lane the car is
+    /**
     Point whereIs() {
-        return new Point(Current_postion, lane_pos);
-    }
 
+        return Coordinates;
+    }
+     **/
+    ArrayList <Integer>  whereIs (){
+        ArrayList <Integer> coordinates =new ArrayList <>();
+        coordinates.add(current_postion);
+        coordinates.add(lane_pos);
+
+        return coordinates;
+    }
 }

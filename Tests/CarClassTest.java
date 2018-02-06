@@ -1,4 +1,4 @@
-import org.junit.Test;
+import CarClass;
 
 import static org.junit.Assert.*;
 import org.junit.Assert;

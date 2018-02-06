@@ -31,14 +31,11 @@ public class Lidar {
         //sensor_data=new int [];
         // this.distance_obs=reading;
         if ( to_obstacle < 50  && to_obstacle > 0 && to_obstacle <= detect_distance  ){
-            return 1;
-           //i++;
+            return 2;
         }else if (to_obstacle < 50  && to_obstacle > 0 &&  to_obstacle >detect_distance ){
-            return 2 ;
-            //i++;
+            return 1 ;
         } else  {
-            return 1;
-            //i++;
+            return -1;
         }
 
     }

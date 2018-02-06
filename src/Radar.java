@@ -4,7 +4,7 @@ public class Radar {
 
     public int distance_obs;
     public ArrayList<Integer> sensor_data ;
-    public int detect_distance=10;
+    public int detect_distance=8;
     public int i=0;
 
     public  Radar (int obstacle,ArrayList<Integer> data) {
@@ -34,10 +34,10 @@ public class Radar {
         //sensor_data = new ArrayList<>();
 
         if ( reading < 50  && reading > 0 && reading <= detect_distance  ){
-            return 1;
-           // i++;
-        }else if (reading < 50  && reading > 0 &&  reading >detect_distance ){
             return 2;
+           // i++;
+        }else if (reading < 50  && reading > 0 &&  reading > detect_distance ){
+            return 1;
            // i++;
         } else  {
             return -1;
@@ -49,7 +49,4 @@ public class Radar {
 
 
 }
-
-
-
 

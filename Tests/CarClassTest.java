@@ -3,6 +3,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Before;
+import java.awt.Point;
+import java.util.ArrayList;
 
 public class CarClassTest {
 
@@ -10,25 +12,43 @@ public class CarClassTest {
 
         @Before
         public void setUp() {
-            carClass = new CarClass(0,0);
+            carClass = new CarClass(0,1);
         }
 
         @Test
         public void moveForwardTest ()  {
-            int position=carClass.whereIs();
-            carClass.moveForward();
+            ArrayList<Integer> position ;
+
+           // for (int i =0 ; i < 18 ; i++) {
+                carClass.moveForward();
+
+           // }
+            position=carClass.whereIs();
             Assert.assertTrue(true);
-          //Assert.assertEquals(carClass.Current_postion & carClass.lane_pos, position);
+            Assert.assertEquals(carClass.current_postion , position.get(0).intValue());
+            Assert.assertEquals(position.get(1).intValue() , carClass.lane_pos );
+            if (position.get(0)>95) {
+                Assert.assertFalse(false);
+                Assert.assertEquals(carClass.current_postion , position.get(0).intValue());
+
+            }
+          ///  System.out.println(initial_pos.toString());
+
 
         }
 
     @Test
     public void MoveMaxTest ()  {
-        CarClass car = new CarClass(97,1);
+        CarClass car = new CarClass(55,1);
+        ArrayList<Integer> pos ;
 
         car.moveForward();
-        //int position=carClass.whereIs();
+        pos=car.whereIs();
         Assert.assertFalse(false);
+        Assert.assertEquals(pos.get(0).intValue(),car.current_postion);
+        Assert.assertEquals(pos.get(1).intValue(),car.lane_pos);
+        System.out.println("check check " + car.current_postion + pos.get(0));
+
     }
 
     @Test
@@ -46,23 +66,29 @@ public class CarClassTest {
 
     @Test
     public void whereIsTest ()  {
-        carClass.moveForward();
-        int position=carClass.whereIs();
-        Assert.assertEquals(carClass.Current_postion & carClass.lane_pos, position);
+        ArrayList<Integer> position ;
+        position=carClass.whereIs();
+        Assert.assertEquals(carClass.current_postion, position.get(0).intValue());
+        Assert.assertEquals(carClass.lane_pos, position.get(1).intValue());
+
     }
 
     @Test
     public void changeLaneTest ()  {
 
+        ArrayList<Integer> position ;
+                position=carClass.whereIs();
         carClass.changeLane();
-        int position=carClass.whereIs();
-        Assert.assertTrue(true);
-        Assert.assertEquals(carClass.Current_postion & carClass.lane_pos, position);
+        Assert.assertTrue(carClass.isEmpty);
+        Assert.assertEquals(position.get(0) +5 , carClass.current_postion);
+
+        Assert.assertEquals( position.get(0) +1 ,carClass.lane_pos );
+        System.out.println("pos" + position.get(0)  );
+        System.out.println("curent pos" + carClass.current_postion  );
 
     }
 
 
 
-    }
-
+}
 

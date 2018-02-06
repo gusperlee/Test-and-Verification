@@ -72,21 +72,22 @@ public class CarClassTest {
         Assert.assertEquals(carClass.lane_pos, position.get(1).intValue());
 
     }
-
     @Test
     public void changeLaneTest ()  {
-
+    	 carClass = new CarClass(0,1);
+    	 boolean input =carClass.leftLaneDetect(12,-2,60,55,100,-4,-12,100);
         ArrayList<Integer> position ;
         position=carClass.whereIs();
         carClass.changeLane();
+     
         Assert.assertTrue(carClass.isEmpty);
         Assert.assertEquals(position.get(0) +5 , carClass.current_postion);
 
         Assert.assertEquals( position.get(1) +1 ,carClass.lane_pos );
         System.out.println("pos" + position.get(0)  );
         System.out.println("current pos" + carClass.current_postion  );
-
     }
+
 
 
 

@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public class CarClass {
@@ -21,10 +22,6 @@ public class CarClass {
 
     boolean  moveForward(){
 
-       // int wheel_diam =5;
-       // int distance=500;
-       // int motor_diam;
-       // double Spin=500/(2*Math.PI*5);
         if (Current_postion  <100 && Current_postion >=0)  {
 
               Current_postion+=5;
@@ -38,13 +35,12 @@ public class CarClass {
     }
 
 
-    public boolean leftLaneDetect (int front, int rear, int left , int lidar_data,
-                                   int front1, int rear1, int left1 , int lidar_data1 ) {
+    public boolean leftLaneDetect (int front, int rear, int left , int lidar_data, int front1, int rear1, int left1 , int lidar_data1 ) {
 
         int count_change=0;
         int count_faulty=0;
-        querry(front,rear,left,lidar_data);
-        querry(front1,rear1,left1,lidar_data1);
+        query(front,rear,left,lidar_data);
+        query(front1,rear1,left1,lidar_data1);
 
         for (int j=0 ; j<8 ; j++) {
 
@@ -65,7 +61,7 @@ public class CarClass {
         return isEmpty;
     }
 
-    public ArrayList<Integer> querry(int front, int rear, int left , int lidar_data) {
+    public ArrayList<Integer> query(int front, int rear, int left , int lidar_data) {
 
         front_radar.checkReading(front);
         rear_radar.checkReading(rear);
@@ -93,23 +89,11 @@ public class CarClass {
            moveForward();
            this.lane_pos=+1;
        }
-
     }
 
     //checks in which lane the car is
-    int whereIs() {
-
-        return  Current_postion & lane_pos ;
+    Point whereIs() {
+        return new Point(Current_postion, lane_pos);
     }
-    // main for testing
-    public static void main(String[] args) {
 
-        CarClass carClass = new CarClass();
-
-        for (int i = 0; i < 100; i++) {
-            carClass.moveForward();
-        }
-
-    }
-    
 }

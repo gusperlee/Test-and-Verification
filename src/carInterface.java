@@ -1,91 +1,42 @@
-package production;
+//package production;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public interface CarInterface{
+public interface CarInterface {
 
-	
     /**
-    Description:    This is the data structure, It uses List data structure to hold the position of car and saved parking spots.
-    Pre-condition:  Car is on the street and in the 0-100 (meters) range
-    Post-condtion:  None
-    Test-cases:     None
-    */
-    class PositionData{
-        int lane = 0;
-        int position = 0;
+     * Description: This method moves forward the car by 1 meter when called.
+     * Pre-condition: Car is on the street and in the 0-100 range.
+     * Post-condtion: The car has moved 1 meter.
+     * Test-cases:
+     */
+    boolean moveForward();
 
-        public PositionData(Integer carPosition, Integer carLane){
-            this.position = carPosition;
-            this.lane = carLane;
 
-        }
-
-        // Getters
-        public int getPosition(){
-        	return this.position;
-        }
-        
-        public int getLane(){
-        	return this.carLane;
-        }
-    }
-
-    
-    
     /**
-    Description: This class holds the position of the car and returns if it is parked or not. 
-    Pre-condition: Car is on the street and in the 0-500 range
-    Post-condtion: None
-    Test-cases: None
-    */
-    class CarPosition {
-        int position;
-        boolean parked;
+     * Description: The method returns the x and y position of the car.
+     * Pre-condition: Car is on the street and in the 0-100 range.
+     * Post-condtion: None
+     * Test-cases:
+     */
+    int[] whereIs();
 
-        public CarPosition(int position, int lane){
-            this.position = position;
-            this.lane = lane;
 
-        }
-
-        // Getters
-        public int getPosition(){
-            return this.position;
-        }
-        
-        public int getLane(){
-            return this.lane;
-        }
-        
-    }
-    
-    
-	
-	/**
-	 Description: This method moves forward the car by 1 meter when called.
-                  It returns the position of the car and a list of available parking slots..
-	 Pre-condition: Car is on the street and in the 0-499 range. The car can not be parked.
-	 Post-condtion: The car has moved 1 meter. 
-	 Test-cases: TC1, TC7
-	 */
-    PositionData moveForward();
-
-      
-    
-    
     /**
-    Description: The methos returns the x postion of the car and whether it is parked or not.
-    Pre-condition: Car is on the street and in the 0-500. It may be parked or not.
-    Post-condtion: None
-    Test-cases: TC4
-    */
-    CarPosition whereIs();
+     * Description: The method calls checkLeftLane() and if it returns true, then change to the lane on the left.
+     * Pre-condition: Car is on the street and in the 0-100 range on the y-axis and between 0-1.99999... on the y-axis.
+     * Post-condtion: None
+     * Test-cases:
+     */
+    void changeLane();
 
-
-
-
-
+    /**
+     * Description:
+     * Pre-condition:
+     * Post-condtion:
+     * Test-cases:
+     */
+    boolean leftLaneDetect(int front, int rear, int left, int lidar_data, int front1, int rear1, int left1, int lidar_data1);
 }

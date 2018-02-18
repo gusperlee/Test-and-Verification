@@ -1,10 +1,8 @@
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Before;
 import java.awt.Point;
-import java.util.ArrayList;
 
 public class CarClassTest {
 
@@ -22,12 +20,12 @@ public class CarClassTest {
 
             position=carClass.whereIs();
             Assert.assertTrue(true);
-            Assert.assertEquals(carClass.current_postion , position.x);
+            Assert.assertEquals(carClass.current_position, position.x);
             Assert.assertEquals(position.y, carClass.lane_pos );
 
             if (position.x>95) {
                 Assert.assertFalse(false);
-                Assert.assertEquals(carClass.current_postion , position.x);
+                Assert.assertEquals(carClass.current_position, position.x);
 
             }
         }
@@ -40,9 +38,9 @@ public class CarClassTest {
         car.moveForward();
         pos=car.whereIs();
         Assert.assertFalse(false);
-        Assert.assertEquals(pos.x,car.current_postion);
+        Assert.assertEquals(pos.x,car.current_position);
         Assert.assertEquals(pos.y,car.lane_pos);
-        System.out.println("check pos " + car.current_postion + pos.x);
+        System.out.println("check pos " + car.current_position + pos.x);
 
     }
 
@@ -63,7 +61,7 @@ public class CarClassTest {
     public void whereIsTest ()  {
         Point position ;
         position=carClass.whereIs();
-        Assert.assertEquals(carClass.current_postion, position.x);
+        Assert.assertEquals(carClass.current_position, position.x);
         Assert.assertEquals(carClass.lane_pos, position.y);
 
     }
@@ -76,11 +74,11 @@ public class CarClassTest {
         carClass.changeLane();
      
         Assert.assertTrue(carClass.isEmpty);
-        Assert.assertEquals(position.x +5 , carClass.current_postion);
+        Assert.assertEquals(position.x +5 , carClass.current_position);
 
         Assert.assertEquals( position.y +1 ,carClass.lane_pos );
         System.out.println("pos" + position.x);
-        System.out.println("current pos" + carClass.current_postion  );
+        System.out.println("current pos" + carClass.current_position);
     }
 }
 

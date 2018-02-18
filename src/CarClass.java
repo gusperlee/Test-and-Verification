@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class CarClass implements CarInterface {
 
-    public  int current_postion;
+    public  int current_position;
     public  int lane_pos=1 ;
     public ArrayList<Integer> data = new ArrayList<>();
     public  boolean isEmpty=true;
@@ -15,15 +15,15 @@ public class CarClass implements CarInterface {
     private Lidar lidar = new Lidar(0, new ArrayList<>());
 
     public CarClass(int positionX, int positionY) {
-        this.current_postion = positionX;
+        this.current_position = positionX;
         this.lane_pos = positionY;
     }
 
     // Assuming the car is moving 5 meters whenever the move function is called the car will move 5 meters. it stops  it reaches 100 meters.
     public boolean moveForward() {
-        if (current_postion < 96 && current_postion >= 0) {
+        if (current_position < 96 && current_position >= 0) {
 
-            current_postion += 5;
+            current_position += 5;
             return true;
 
         } else {
@@ -95,7 +95,7 @@ public class CarClass implements CarInterface {
 
     public Point whereIs(){
         Point coordinates = new Point();
-        coordinates.x = current_postion;
+        coordinates.x = current_position;
         coordinates.y = lane_pos;
         return coordinates;
     }

@@ -101,10 +101,10 @@ public class CarClass implements CarInterface {
     }
      **/
 
-    public ArrayList <Integer>  whereIs (){
-        ArrayList <Integer> coordinates =new ArrayList <>();
-        coordinates.add(current_position);
-        coordinates.add(lane_pos);
+    public Point whereIs (){
+        Point coordinates = new Point();
+        coordinates.x = current_position;
+        coordinates.y = lane_pos;
 
         return coordinates;
     }

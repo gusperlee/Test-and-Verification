@@ -56,7 +56,6 @@ public class CarClassTest {
 
     }
 
-
     @Test
     public void whereIsTest ()  {
         Point position ;
@@ -65,6 +64,7 @@ public class CarClassTest {
         Assert.assertEquals(carClass.lane_pos, position.y);
 
     }
+
     @Test
     public void changeLaneTest ()  {
     	carClass = new CarClass(0,1);

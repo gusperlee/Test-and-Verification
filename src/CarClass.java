@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class CarClass {
+public class CarClass implements CarInterface {
 
     public  int current_postion;
     public  int lane_pos=1 ;
@@ -20,7 +20,6 @@ public class CarClass {
     }
 
     // Assuming the car is moving 5 meters whenever the move function is called the car will move 5 meters. it stops  it reaches 100 meters.
-
     public boolean moveForward() {
         if (current_postion < 96 && current_postion >= 0) {
 

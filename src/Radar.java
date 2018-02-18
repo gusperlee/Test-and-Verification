@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Radar {
+public class Radar implements SensorInterface{
 
     public int distance_obs;
     public ArrayList<Integer> sensor_data ;

@@ -16,7 +16,7 @@ public class CarClassTest {
         }
 
         @Test
-        public void moveForwardTest ()  {
+        public void moveForwardTest() {
             ArrayList<Integer> position ;
 
            // for (int i =0 ; i < 18 ; i++) {
@@ -27,6 +27,7 @@ public class CarClassTest {
             Assert.assertTrue(true);
             Assert.assertEquals(carClass.current_postion , position.get(0).intValue());
             Assert.assertEquals(position.get(1).intValue() , carClass.lane_pos );
+
             if (position.get(0)>95) {
                 Assert.assertFalse(false);
                 Assert.assertEquals(carClass.current_postion , position.get(0).intValue());
@@ -84,7 +85,7 @@ public class CarClassTest {
 
         Assert.assertEquals( position.get(0) +1 ,carClass.lane_pos );
         System.out.println("pos" + position.get(0)  );
-        System.out.println("curent pos" + carClass.current_postion  );
+        System.out.println("current pos" + carClass.current_postion  );
 
     }
 

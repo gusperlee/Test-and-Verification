@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public interface CarInterface {
@@ -17,7 +18,7 @@ public interface CarInterface {
      * Post-condition: None
      * Test-cases:
      */
-    ArrayList<Integer> whereIs();
+    Point whereIs();
 
 
     /**

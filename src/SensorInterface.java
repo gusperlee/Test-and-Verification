@@ -1,25 +1,9 @@
 public interface SensorInterface {
     /**
-     * Description: getDistance_obs gets the distance to the nearest obstacle using a sensor (radar or lidar)
+     * Description: Checks if the reading received is within range
      * Pre-condition: None
-     * Post-condition:
+     * Post-condition: Has returned a value (2, 1 or -1) if the measurement is too close, within range or out of range, respectively
      * Test-cases:
      */
-    //int getDistance_obs();
-
-    /**
-     * Description:
-     * Pre-condition:
-     * Post-condition:
-     * Test-cases:
-     */
-    boolean check_left_lane(int dis_to_target);
-
-    /**
-     * Description:
-     * Pre-condition:
-     * Post-condition:
-     * Test-cases:
-     */
-    public int checkReading(int to_obstacle);
+    int checkReading(int to_obstacle);
 }

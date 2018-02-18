@@ -10,16 +10,21 @@ public interface SensorInterface {
     /**
      * Description:
      * Pre-condition:
+     * 1. Car is on the road and not reach the bound of road
      * Post-condition:
+     * return if there is car in the left lane next to current lane
      * Test-cases:
      */
     boolean check_left_lane(int dis_to_target);
 
-    /**
-     * Description:
-     * Pre-condition:
-     * Post-condition:
-     * Test-cases:
+	/**
+	 * Method used for reading a sensor.
+	 * Pre-Condition
+	 * 1. Car is on the road 
+	 * Post-Condition
+	 * 1. The sensor returns a reading.
+	 * Tests
+     * @return int
      */
     public int checkReading(int to_obstacle);
 }

@@ -8,6 +8,7 @@ public class CarClass implements CarInterface {
     public ArrayList<Integer> data = new ArrayList<>();
     public  boolean isEmpty=true;
    // public Point Coordinates = new Point (Current_postion,lane_pos );
+    String error_message="";
 
     private Radar front_radar = new Radar(0, new ArrayList<>());
     private Radar rear_radar = new Radar(0, new ArrayList<>());
@@ -38,6 +39,7 @@ public class CarClass implements CarInterface {
 
         int count_changeLane = 0;
         int count_faulty = 0;
+        int count_corrupted=0;
         querry(front, rear, left, lidar_data);
         querry(front1, rear1, left1, lidar_data1);
 
@@ -50,14 +52,22 @@ public class CarClass implements CarInterface {
             if (j <4 && data.get(j) == 1 &&  data.get(j+4)==1 ) {
                 count_changeLane++;
 
+            } if (j < 4 && data.get(j) == -1 && data.get(j+4) == -1){
+                count_corrupted++;
             }
 
 
         }
-        if (count_changeLane > 1 && count_faulty ==0 ) {
+        if (count_changeLane > 1 && count_faulty ==0  ) {
             isEmpty = true;
-        } else if (count_faulty > 0){
+
+        } else if (count_faulty > 0 &&  isEmpty){
            isEmpty = false;
+        } else if (count_corrupted >1 && count_changeLane <2) {
+            isEmpty = false;
+            System.out.println("you have more than 1 corrupted sensor") ;
+            error_message="you have more than 1 corrupted sensor";
+
         }
 
         System.out.println("enfjeje" + count_faulty + isEmpty + count_changeLane );
@@ -87,13 +97,14 @@ public class CarClass implements CarInterface {
         //  }
         //  }
 
-        // j++;
+       // j++;
         return data;
     }
 
     public void changeLane() {
 
-        if (isEmpty) {
+        if (isEmpty && lane_pos!=3) {
+
             moveForward();
            // Coordinates.y = lane_pos ++;
             lane_pos ++;
@@ -113,7 +124,8 @@ public class CarClass implements CarInterface {
         return Coordinates;
     }
      **/
-    ArrayList <Integer>  whereIs (){
+
+    public ArrayList <Integer>  whereIs (){
         ArrayList <Integer> coordinates =new ArrayList <>();
         coordinates.add(current_postion);
         coordinates.add(lane_pos);

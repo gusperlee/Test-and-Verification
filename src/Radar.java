@@ -17,7 +17,7 @@ public class Radar implements SensorInterface{
     //}
 
 
-    boolean Check_left_lane(int dis_to_target) {
+    public boolean check_left_lane(int dis_to_target) {
 
         if (distance_obs > 1) {
             return true;

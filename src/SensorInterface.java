@@ -5,7 +5,7 @@ public interface SensorInterface {
      * Post-condition:
      * Test-cases:
      */
-    int getDistance_obs();
+    //int getDistance_obs();
 
     /**
      * Description:

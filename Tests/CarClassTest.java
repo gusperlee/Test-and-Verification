@@ -48,19 +48,19 @@ public class CarClassTest {
         Assert.assertFalse(false);
         Assert.assertEquals(pos.get(0).intValue(),car.current_postion);
         Assert.assertEquals(pos.get(1).intValue(),car.lane_pos);
-        System.out.println("check check " + car.current_postion + pos.get(0));
+        System.out.println("check pos " + car.current_postion + pos.get(0));
 
     }
 
     @Test
     public void leftLaneDetectTest ()  {
 
-            boolean input =carClass.leftLaneDetect(11,11,214,199,12,13,12,17);
+           boolean input =carClass.leftLaneDetect(160,-2,5,15,70,120,6,44);
             CarClass car =new CarClass(50,1);
-            boolean input2 =car.leftLaneDetect(5,2,66,18,4,3,2,13);
-            //Assert.assertTrue(input);
-            Assert.assertFalse(input2);
-            Assert.assertTrue(input);
+            boolean input2 =car.leftLaneDetect(24,80,60,14,23,18,9,31);
+            Assert.assertFalse(input);
+            Assert.assertTrue(input2);
+            Assert.assertEquals("you have more than 1 corrupted sensor",car.error_message);
 
     }
 
@@ -73,23 +73,20 @@ public class CarClassTest {
         Assert.assertEquals(carClass.lane_pos, position.get(1).intValue());
 
     }
-
     @Test
     public void changeLaneTest ()  {
-
+    	 carClass = new CarClass(0,1);
+    	 boolean input =carClass.leftLaneDetect(12,-2,60,55,100,-4,-12,100);
         ArrayList<Integer> position ;
-                position=carClass.whereIs();
+        position=carClass.whereIs();
         carClass.changeLane();
+     
         Assert.assertTrue(carClass.isEmpty);
         Assert.assertEquals(position.get(0) +5 , carClass.current_postion);
 
-        Assert.assertEquals( position.get(0) +1 ,carClass.lane_pos );
+        Assert.assertEquals( position.get(1) +1 ,carClass.lane_pos );
         System.out.println("pos" + position.get(0)  );
         System.out.println("current pos" + carClass.current_postion  );
-
     }
-
-
-
 }
 

@@ -27,41 +27,47 @@ public class CarClass implements CarInterface {
         return state;
     }
 
-    
-    public boolean leftLaneDetect(int front, int rear, int left, int lidar_data, int front1, int rear1, int left1,
-			int lidar_data1) {
+
+	public boolean leftLaneDetect(int front, int rear, int left, int lidar_data,
+								  int front1, int rear1, int left1, int lidar_data1) {
+
 
 		int count_changeLane = 0;
-		int count_faulty = 0;
-		int count_corrupted = 0;
+		int count_occupied = 0;
+		int count_corrupted=0;
 		querry(front, rear, left, lidar_data);
 		querry(front1, rear1, left1, lidar_data1);
 
 		for (int j = 0; j < data.size(); j++) {
 
-			if (j < 4 && data.get(j) == 2 && (data.get(j + 4) == 2 || data.get(j + 4) == -1 || data.get(j + 4) == 1)) {
-				count_faulty++;
+			if (j<4 && data.get(j) == 2 && (data.get(j+4) == 2 || data.get(j+4) == -1 || data.get(j+4) == 1) ) {
+				count_occupied++;
+
 			}
-			if (j < 4 && data.get(j) == 1 && data.get(j + 4) == 1) {
+			if (j <4 && data.get(j) == 1 &&  data.get(j+4)==1 ) {
 				count_changeLane++;
 
-			}
-			if (j < 4 && data.get(j) == -1 && data.get(j + 4) == -1) {
+			} if (j < 4 && data.get(j) == -1 && data.get(j+4) == -1){
 				count_corrupted++;
 			}
+
+
 		}
-		if (count_changeLane > 1 && count_faulty == 0) {
+		if (count_changeLane > 1 && count_occupied ==0  ) {
 			isEmpty = true;
 
-		} else if (count_faulty > 0 && isEmpty) {
+		}   else if (count_corrupted >1 && count_changeLane <2 ) {
+
 			isEmpty = false;
-		} else if (count_corrupted > 1 && count_changeLane < 2) {
+			System.out.println("you have more than 1 corrupted sensor") ;
+			error_message="you have more than 1 corrupted sensor";
+
+		} else if (count_occupied > 0 ){
 			isEmpty = false;
-			System.out.println("you have more than 1 corrupted sensor");
-			error_message = "you have more than 1 corrupted sensor";
+			error_message="there is an obstacle on the left";
+
 
 		}
-		System.out.println("enfjeje" + count_faulty + isEmpty + count_changeLane);
 		return isEmpty;
 	}
 
@@ -77,19 +83,13 @@ public class CarClass implements CarInterface {
 		return data;
 	}
 
+
+
     public void changeLane() {
 
     	actuator.changeLane(this);
 
     }
-
-    //checks in which lane the car is
-    /**
-    Point whereIs() {
-
-        return Coordinates;
-    }
-     **/
 
     public Point whereIs (){
         Point coordinates = new Point();

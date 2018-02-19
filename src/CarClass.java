@@ -16,8 +16,8 @@ public class CarClass implements CarInterface {
     private Lidar lidar = new Lidar(0, new ArrayList<>());
     private Actuator actuator = new Actuator();
 
-    public CarClass(int positionx, int positionY) {
-        this.current_position = positionx;
+    public CarClass(int positionX, int positionY) {
+        this.current_position = positionX;
         this.lane_pos = positionY;
     }
 

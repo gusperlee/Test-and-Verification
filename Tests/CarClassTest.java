@@ -3,7 +3,6 @@ import org.junit.Test;
 import org.junit.Assert;
 import org.junit.Before;
 import java.awt.Point;
-import java.util.ArrayList;
 
 public class CarClassTest {
 
@@ -36,7 +35,6 @@ public class CarClassTest {
 
     }
 
-
     @Test
     public void leftLaneDetectFreeWay_twoFaultySensorsTest ()  {
 
@@ -62,7 +60,6 @@ public class CarClassTest {
 
     }
 
-
     @Test
     public void whereIsTest () {
         Point position;
@@ -71,7 +68,6 @@ public class CarClassTest {
         Assert.assertEquals(carClass.lane_pos, position.y);
 
     }
-
 
     @Test
     public void whereIsTest_afterMove ()  {
@@ -83,7 +79,6 @@ public class CarClassTest {
         Assert.assertEquals(carClass.lane_pos, position_after.y);
 
     }
-
 
     @Test
     public void changeLaneTest_StartInThirdLane  ()  {
@@ -128,7 +123,6 @@ public class CarClassTest {
 
     }
 
-
     @Test
     public void changeLaneTest_WithNOObstacle()  {
 
@@ -142,9 +136,6 @@ public class CarClassTest {
         Assert.assertEquals( carClass.lane_pos, position.y );
 
     }
-
-
-
 
     @Test
     public void changeLaneTest_WithObstacle ()  {

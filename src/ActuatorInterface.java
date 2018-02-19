@@ -11,7 +11,7 @@ public interface ActuatorInterface {
 	
 	 /**
 	  * Description: changeLane makes the car change lane to the left one
-	  * Pre-condition: no car on left line, last line (3rd) not reached
+	  * Pre-condition: no car on left lane, last lane (3rd) not reached
 	  * Post-condition: lane changed 
 	  * Test-cases:
 	  */

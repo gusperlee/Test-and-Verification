@@ -18,8 +18,7 @@ public class Actuator {
 	
 	 public void changeLane(CarClass car) {
 
-	        if (car.isEmpty && car.current_position!=3) {
-
+		 if (car.isEmpty && (car.lane_pos==2 || car.lane_pos==1 )) {
 	            car.moveForward();
 
 	            car.lane_pos++;

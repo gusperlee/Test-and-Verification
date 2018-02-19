@@ -2,33 +2,34 @@
 import java.util.ArrayList;
 
 public class Actuator {
-	int carPosition[] = new int[10]; 
-	public boolean moveForward(CarClass car) {
-		if (car.current_position < 96 && car.current_position >= 0) {
+    int carPosition[] = new int[10];
 
-			car.current_position += 5;
-			return true;
+    public boolean moveForward(CarClass car) {
+        if (car.current_position < 96 && car.current_position >= 0) {
 
-		} else {
+            car.current_position += 5;
+            return true;
 
-			return false;
+        } else {
 
-		}
-	}
-	
-	 public void changeLane(CarClass car) {
+            return false;
 
-	        if (car.isEmpty && car.current_position!=3) {
+        }
+    }
 
-	            car.moveForward();
+    public void changeLane(CarClass car) {
 
-	            car.lane_pos++;
+        if (car.isEmpty && car.current_position != 3) {
 
-	        } else {
+            car.moveForward();
 
-	            car.moveForward();
-	        }
+            car.lane_pos++;
 
-	    }
+        } else {
+
+            car.moveForward();
+        }
+
+    }
 
 }

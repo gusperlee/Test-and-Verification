@@ -76,16 +76,6 @@ public class CarClass implements CarInterface {
 
 		return data;
 	}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     public void changeLane() {
 

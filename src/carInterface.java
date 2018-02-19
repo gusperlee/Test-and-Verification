@@ -32,8 +32,8 @@ public interface CarInterface {
     /**
      * Description: Takes eight consecutive measurements, taken from the four sensors, as arguments and checks if these
      * are within bound of normality (0m-50m). If this is the case, check if there is an obstacle directly to the left of the car (0m-8m).
-     * Pre-condition:
-     * Post-condition:
+     * Pre-condition: None
+     * Post-condition: Returns a true/false value depending on whether there is/isn't an obstacle on the left
      * Test-cases:
      */
     boolean leftLaneDetect(int front, int rear, int left, int lidar_data, int front1, int rear1, int left1, int lidar_data1);

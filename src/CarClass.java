@@ -3,8 +3,6 @@ import java.util.ArrayList;
 
 public class CarClass implements CarInterface {
 
-    public  int current_position;
-    public  int lane_pos=1 ;
     public ArrayList<Integer> data = new ArrayList<>();
     public  boolean isEmpty=true;
    // public Point Coordinates = new Point (Current_postion,lane_pos );
@@ -14,16 +12,16 @@ public class CarClass implements CarInterface {
     private Radar rear_radar = new Radar(0, new ArrayList<>());
     private Radar left_radar = new Radar(0, new ArrayList<>());
     private Lidar lidar = new Lidar(0, new ArrayList<>());
-    private Actuator actuator = new Actuator();
+    Actuator actuator = new Actuator();
 
     public CarClass(int positionx, int positionY) {
-        this.current_position = positionx;
-        this.lane_pos = positionY;
+        this.actuator.current_position = positionx;
+        this.actuator.lane_pos = positionY;
     }
 
     // Assuming the car is moving 5 meters whenever the move function is called the car will move 5 meters. it stops  it reaches 100 meters.
     public boolean moveForward() {
-        boolean state = actuator.moveForward(this);
+        boolean state = actuator.moveForward();
         return state;
     }
 
@@ -93,8 +91,8 @@ public class CarClass implements CarInterface {
 
     public Point whereIs (){
         Point coordinates = new Point();
-        coordinates.x = current_position;
-        coordinates.y = lane_pos;
+        coordinates.x = actuator.current_position;
+        coordinates.y = actuator.lane_pos;
 
         return coordinates;
     }

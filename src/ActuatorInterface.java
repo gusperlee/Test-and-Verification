@@ -15,6 +15,6 @@ public interface ActuatorInterface {
 	  * Post-condition: lane changed 
 	  * Test-cases:
 	  */
-	void changeLane();
+	void changeLane(CarClass car);
 		
 }

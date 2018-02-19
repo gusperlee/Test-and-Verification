@@ -19,8 +19,8 @@ public class CarClassTest {
 
         position=carClass.whereIs();
         Assert.assertTrue(carClass.moveForward());
-        Assert.assertEquals(carClass.current_position  , position.x +5);
-        Assert.assertEquals(carClass.lane_pos,position.y   );
+        Assert.assertEquals(carClass.actuator.current_position  , position.x +5);
+        Assert.assertEquals(carClass.actuator.lane_pos,position.y   );
     }
 
     @Test
@@ -30,8 +30,8 @@ public class CarClassTest {
         Point intial_pos;
         intial_pos=carClass.whereIs();
         Assert.assertFalse( carClass.moveForward());
-        Assert.assertEquals(intial_pos.x,carClass.current_position);
-        Assert.assertEquals(intial_pos.y,carClass.lane_pos);
+        Assert.assertEquals(intial_pos.x,carClass.actuator.current_position);
+        Assert.assertEquals(intial_pos.y,carClass.actuator.lane_pos);
 
     }
 
@@ -64,8 +64,8 @@ public class CarClassTest {
     public void whereIsTest () {
         Point position;
         position = carClass.whereIs();
-        Assert.assertEquals(carClass.current_position, position.x);
-        Assert.assertEquals(carClass.lane_pos, position.y);
+        Assert.assertEquals(carClass.actuator.current_position, position.x);
+        Assert.assertEquals(carClass.actuator.lane_pos, position.y);
 
     }
 
@@ -75,8 +75,8 @@ public class CarClassTest {
         carClass.moveForward();
         position_after=carClass.whereIs();
 
-        Assert.assertEquals(carClass.current_position, position_after.x );
-        Assert.assertEquals(carClass.lane_pos, position_after.y);
+        Assert.assertEquals(carClass.actuator.current_position, position_after.x );
+        Assert.assertEquals(carClass.actuator.lane_pos, position_after.y);
 
     }
 
@@ -89,8 +89,8 @@ public class CarClassTest {
         car2.leftLaneDetect( 4,4,4,4,4,4,4,4);
         position=car2.whereIs();
         car2.changeLane();
-        Assert.assertEquals( car2.current_position ,position.x +5);
-        Assert.assertEquals( car2.lane_pos, position.y );
+        Assert.assertEquals( car2.actuator.current_position ,position.x +5);
+        Assert.assertEquals( car2.actuator.lane_pos, position.y );
 
     }
 
@@ -102,8 +102,8 @@ public class CarClassTest {
         carClass.leftLaneDetect(15,55,60,13,12,55,60,15);
         carClass.changeLane();
 
-        Assert.assertEquals( carClass.current_position ,new_position.x + 5);
-        Assert.assertEquals( carClass.lane_pos, new_position.y +1  );
+        Assert.assertEquals( carClass.actuator.current_position ,new_position.x + 5);
+        Assert.assertEquals( carClass.actuator.lane_pos, new_position.y +1  );
 
     }
 
@@ -118,8 +118,8 @@ public class CarClassTest {
 
         car3.changeLane();
 
-        Assert.assertEquals( car3.current_position ,position.x + 5);
-        Assert.assertEquals( car3.lane_pos, position.y +1  );
+        Assert.assertEquals( car3.actuator.current_position ,position.x + 5);
+        Assert.assertEquals( car3.actuator.lane_pos, position.y +1  );
 
     }
 
@@ -132,8 +132,8 @@ public class CarClassTest {
         Assert.assertFalse(carClass.isEmpty);
         carClass.changeLane();
 
-        Assert.assertEquals( carClass.current_position ,position.x + 5);
-        Assert.assertEquals( carClass.lane_pos, position.y );
+        Assert.assertEquals( carClass.actuator.current_position ,position.x + 5);
+        Assert.assertEquals( carClass.actuator.lane_pos, position.y );
 
     }
 
@@ -143,9 +143,9 @@ public class CarClassTest {
         Point  position=carClass.whereIs();
         carClass.changeLane();
         Assert.assertFalse(carClass.isEmpty);
-        Assert.assertEquals(position.x +5 , carClass.current_position);
+        Assert.assertEquals(position.x +5 , carClass.actuator.current_position);
 
-        Assert.assertEquals( carClass.lane_pos, position.y);
+        Assert.assertEquals( carClass.actuator.lane_pos, position.y);
     }
 
 }

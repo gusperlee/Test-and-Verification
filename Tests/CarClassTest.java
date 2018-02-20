@@ -222,6 +222,39 @@ public class CarClassTest {
 
     }
 
+    @Test
+    public void Scenario_4_Test ()  {
+        CarClass scenario4 = new CarClass(0,1);
+        Point position1;
+        Point position2;
+        Point position3;
+
+        position1 = scenario4.whereIs();
+
+        for (int i =0 ; i < 10 ; i++ ) {
+
+            Assert.assertTrue(scenario4.moveForward());
+        }
+        Assert.assertEquals(position1.x +50, scenario4.actuator.current_position  );
+        Assert.assertEquals(position1.y , scenario4.actuator.lane_pos );
+
+        scenario4.leftLaneDetect(3,3,-20,5,4,3,5,19);
+        position2=scenario4.whereIs();
+
+        scenario4.changeLane();
+
+        Assert.assertEquals(position2.x +5 , scenario4.actuator.current_position );
+        Assert.assertEquals( position2.y   ,scenario4.actuator.lane_pos );
+        scenario4.whereIs();
+
+        for (int j =0; j<9; j++ ) {
+            Assert.assertTrue(scenario4.moveForward());
+        }
+        Assert.assertEquals(position3.x  , scenario4.actuator.current_position );
+        Assert.assertEquals( position3.y  , scenario4.actuator.lane_pos );
+
+    }
+
 
 
 }

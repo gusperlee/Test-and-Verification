@@ -3,6 +3,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import org.junit.Before;
 import java.awt.Point;
+import java.util.ArrayList;
 
 public class CarClassTest {
 
@@ -148,8 +149,80 @@ public class CarClassTest {
         Assert.assertEquals( carClass.actuator.lane_pos, position.y);
     }
 
+    @Test
+    public void Scenario_1_Test ()  {
+        CarClass scenario = new CarClass(50,1);
+        Point position1;
+        Point position2;
+
+
+        position1 = scenario.whereIs();
+        for (int i =0 ; i < 5 ; i++ ) {
+
+            Assert.assertTrue(scenario.moveForward());
+        }
+        Assert.assertEquals(scenario.actuator.current_position  , position1.x +25);
+        Assert.assertEquals(position1.y , scenario.actuator.lane_pos );
+
+        scenario.leftLaneDetect(5,7,60,-55,15,-7,-12,-100);
+        position2=scenario.whereIs();
+        Assert.assertEquals(position2.x , scenario.actuator.current_position );
+        Assert.assertEquals( position2.y ,scenario.actuator.lane_pos );
+
+        scenario.changeLane();
+
+        Assert.assertEquals(position2.x + 5, scenario.actuator.current_position );
+        Assert.assertEquals( position2.y ,scenario.actuator.lane_pos );
+
+
+        scenario.leftLaneDetect(15,17,10,-15,-15,67,10,17);
+
+        scenario.changeLane();
+
+        Assert.assertEquals(position2.x + 10 , scenario.actuator.current_position );
+        Assert.assertEquals( position2.y ,scenario.actuator.lane_pos );
+
+
+
+
+    }
+
+    @Test
+    public void Scenario_2_Test ()  {
+        CarClass scenario = new CarClass(70,1);
+        Point position1;
+        Point position2;
+        Point position3;
+
+        position1 = scenario.whereIs();
+
+        for (int i =0 ; i < 3 ; i++ ) {
+
+            Assert.assertTrue(scenario.moveForward());
+        }
+        Assert.assertEquals(position1.x +15, scenario.actuator.current_position  );
+        Assert.assertEquals(position1.y , scenario.actuator.lane_pos );
+
+        scenario.leftLaneDetect(12,15,15,20,15,17,19,19);
+        position2=scenario.whereIs();
+
+        scenario.changeLane();
+
+        Assert.assertEquals(position2.x +5 , scenario.actuator.current_position );
+        Assert.assertEquals( position2.y +1  ,scenario.actuator.lane_pos );
+
+
+        scenario.leftLaneDetect(12,15,-30,-40,6,5,3,14);
+        position3=scenario.whereIs();
+
+        scenario.changeLane();
+
+        Assert.assertEquals(position3.x +5 , scenario.actuator.current_position );
+        Assert.assertEquals( position3.y  , scenario.actuator.lane_pos );
+
+    }
+
+
+
 }
-
-
-
 

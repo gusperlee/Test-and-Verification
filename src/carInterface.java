@@ -1,7 +1,7 @@
 import java.awt.Point;
 import java.util.ArrayList;
 
-public interface CarInterface {
+ interface CarInterface {
 
     /**
      * Description: This method moves forward the car by 5 meters when called, using the actuator.

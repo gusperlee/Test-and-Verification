@@ -64,8 +64,11 @@ public class CarClass implements CarInterface {
 			isEmpty = false;
 			error_message="there is an obstacle on the left";
 
-
+		} else if ((count_changeLane==0 ||count_changeLane==1)   && (count_occupied==0 ) && (count_corrupted==0 ||count_corrupted==1)  ) {
+			isEmpty = false;
 		}
+		data =  new ArrayList<>();
+
 		return isEmpty;
 	}
 

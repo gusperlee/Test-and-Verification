@@ -164,7 +164,7 @@ public class CarClassTest {
         Assert.assertEquals(scenario.actuator.current_position  , position1.x +25);
         Assert.assertEquals(position1.y , scenario.actuator.lane_pos );
 
-        scenario.leftLaneDetect(5,7,60,-55,15,-7,-12,-100);
+        scenario.leftLaneDetect(5,7,60,5,15,-7,-12,-100);
         position2=scenario.whereIs();
         Assert.assertEquals(position2.x , scenario.actuator.current_position );
         Assert.assertEquals( position2.y ,scenario.actuator.lane_pos );
@@ -175,12 +175,12 @@ public class CarClassTest {
         Assert.assertEquals( position2.y ,scenario.actuator.lane_pos );
 
 
-        scenario.leftLaneDetect(15,17,10,-15,-15,67,10,17);
+        scenario.leftLaneDetect(15,17,10,-15,-15,12,10,17);
 
         scenario.changeLane();
 
         Assert.assertEquals(position2.x + 10 , scenario.actuator.current_position );
-        Assert.assertEquals( position2.y ,scenario.actuator.lane_pos );
+        Assert.assertEquals( position2.y +1 ,scenario.actuator.lane_pos );
 
 
 
@@ -189,18 +189,18 @@ public class CarClassTest {
 
     @Test
     public void Scenario_2_Test ()  {
-        CarClass scenario = new CarClass(70,1);
+        CarClass scenario = new CarClass(75,1);
         Point position1;
         Point position2;
         Point position3;
 
         position1 = scenario.whereIs();
 
-        for (int i =0 ; i < 3 ; i++ ) {
+        for (int i =0 ; i < 4 ; i++ ) {
 
             Assert.assertTrue(scenario.moveForward());
         }
-        Assert.assertEquals(position1.x +15, scenario.actuator.current_position  );
+        Assert.assertEquals(position1.x +20, scenario.actuator.current_position  );
         Assert.assertEquals(position1.y , scenario.actuator.lane_pos );
 
         scenario.leftLaneDetect(12,15,15,20,15,17,19,19);
@@ -217,7 +217,7 @@ public class CarClassTest {
 
         scenario.changeLane();
 
-        Assert.assertEquals(position3.x +5 , scenario.actuator.current_position );
+        Assert.assertEquals(position3.x  , scenario.actuator.current_position );
         Assert.assertEquals( position3.y  , scenario.actuator.lane_pos );
 
     }

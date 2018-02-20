@@ -1,6 +1,15 @@
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.mockito.Matchers.anyInt;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Before;
+import org.junit.Test;
 
 public class Scenario4 implements TestInterface {
     /*
@@ -16,17 +25,23 @@ public class Scenario4 implements TestInterface {
     private Actuator actuator;
     private CarClass testcar;
 
-
+    @Before
     public void create(){
         /*
          * Mock to sensors from the sensor interface
          * */
-        Sensor front,rear,left = new Radar;
-        Sensor lidar_data = new Lidar;
-        Sensor front    = mock(Radar.class);
-        Sensor rear    = mock(Radar.class);
-        Sensor left    = mock(Radar.class);
-        Sensor lidar_data    = mock(Lidar.class);
+        Sensor sensors[]=new Sensor[8];
+        sensors[0]     = mock(Radar.class);
+        sensors[1]     = mock(Radar.class);
+        sensors[2]     = mock(Radar.class);
+        sensors[3]     = mock(Lidar.class);
+        sensors[4]     = mock(Radar.class);
+        sensors[5]     = mock(Radar.class);
+        sensors[6]     = mock(Radar.class);
+        sensors[7]     = mock(Lidar.class);
+        int obstacle_counter = 0;
+        int lane_pos = 1;
+        boolean isEmpty = true;
         /*
          * Mock the actuator interface
          */
@@ -38,13 +53,19 @@ public class Scenario4 implements TestInterface {
         this.sensors = sensors;
         private boolean isEmpty=true;
         /*
-         * Stub the moveF method so that it return 50 for all integers
+         * Stub the moveForward method so that it return 5 for all integers
          * */
-        when(actuator.moveForward(testcar.whereIs())).thenReturn(50);
+        when(actuator.moveForward(testcar.whereIs())).thenReturn(5);
 		/*
 		 *
 		 */
-        when(testcar.querry(2,3,4,5)).thenReturn(isEmpty(false));
+		when(actuator.changeLane(testcar.isEmpty(true))).thenReturn(lane_pos++);
+        /*
+         * Stub the read method from sensors so that it return the value
+         * */
+        for(int i=0;i<sensors.length;i++)
+            for(int n=0;n<100;n++)
+                when(sensors[i].checkReading(2)).thenReturn(isEmpty=false);
 
     }
 
@@ -54,12 +75,22 @@ public class Scenario4 implements TestInterface {
         for(int i = 0; i < 96; i+=5){
             testcar.moveForward();
         }
-        test = test && testcar.whereIs(98);
+        test = test && testcar.whereIs();
+
+        /*
+         * Move the car to 50
+         * */
+        for(int i=0;i<10;i+=5){
+            testcar.moveForward();
+        }
 
 
-        testcar.leftLaneDetect(3,3,3,3);
+        testcar.leftLaneDetect(sensors[i]);
+        /*
+         * test if the car could change lane
+         * */
 
-        test = test && testcar.isEmpty().isEmpty == false;
+        test = test && testcar.isEmpty(false)&& testcar.WhereIs().positionX+5;
         
         /*
          * then move to the end of the road.
@@ -67,10 +98,6 @@ public class Scenario4 implements TestInterface {
         for(int i=testcar.whereIs();i<99;i++){
             testcar.moveForward();
         }
-        /*
-         * test if car moved to the end of the road
-         * */
-        test=test && testcar.whereIs(99);
         /*
          * verify test
          * */

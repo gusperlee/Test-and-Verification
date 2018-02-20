@@ -7,9 +7,9 @@ import org.junit.Test;
 import java.util.List;
 
 public interface TestInterface{
-    Sensor Lidar,Radar;
+    Sensor Lidar, Radar;
     Actuator actuator;
-	  Car testcar;
+    CarClass testcar;
    
 
     @Before
